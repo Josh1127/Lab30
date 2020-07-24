@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "286075606787",
+    "firebase_url": "https://lab30-chat.firebaseio.com",
+    "project_id": "lab30-chat",
+    "storage_bucket": "lab30-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286075606787:android:8389dd778d564255387b36",
+        "android_client_info": {
+          "package_name": "com.ano.lab30"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286075606787-lu5r3od0sqesait15lc9dbju4vjiub1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPXx4lTuEDgqlcieCPOsgGI17V3hany9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286075606787-lu5r3od0sqesait15lc9dbju4vjiub1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UID.RegisterActivity"
+    android:background="#0ff0f0">
+
+
+    <EditText
+        android:id="@+id/register_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="請輸入暱稱"
+        android:inputType="textPersonName"
+        android:paddingLeft="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="請輸入email"
+        android:inputType="textPersonName"
+        android:paddingLeft="8dp"
+        android:text="a@gmail.com"
+        app:layout_constraintEnd_toEndOf="@+id/register_nickname"
+        app:layout_constraintStart_toStartOf="@+id/register_nickname"
+        app:layout_constraintTop_toBottomOf="@+id/register_nickname" />
+
+    <EditText
+        android:id="@+id/register_passwd"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="請輸入密碼"
+        android:inputType="textPassword"
+        android:paddingLeft="8dp"
+        android:text="123456"
+        app:layout_constraintEnd_toEndOf="@+id/register_email"
+        app:layout_constraintStart_toStartOf="@+id/register_email"
+        app:layout_constraintTop_toBottomOf="@+id/register_email" />
+
+    <EditText
+        android:id="@+id/passwd_check"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="請再次輸入密碼確認"
+        android:inputType="textPassword"
+        android:paddingLeft="8dp"
+        android:text="123456"
+        app:layout_constraintEnd_toEndOf="@+id/register_passwd"
+        app:layout_constraintStart_toStartOf="@+id/register_passwd"
+        app:layout_constraintTop_toBottomOf="@+id/register_passwd" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_login"
+        android:onClick="register"
+        android:text="註冊"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/passwd_check"
+        app:layout_constraintStart_toStartOf="@+id/passwd_check"
+        app:layout_constraintTop_toBottomOf="@+id/passwd_check" />
+</androidx.constraintlayout.widget.ConstraintLayout>
