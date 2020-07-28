@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UID.LoginActivity"
-    android:background="#0ff0f0">
+    android:background="#0ff0f0"
+    tools:context=".UID.LoginActivity">
 
 
     <EditText
@@ -43,6 +43,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/button_login"
         android:text="登入"
+        android:onClick="login"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/login_passwd"
@@ -67,9 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="忘記密碼"
-        android:textStyle="bold"
-        android:textColor="@android:color/darker_gray"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,33 +14,32 @@ class LatestMessageActivity : AppCompatActivity() {
         private val REQUEST_CORD=10
         private val TAG=LatestMessageActivity::class.java.simpleName
     }
+    val firebaseAuth = FirebaseAuth.getInstance()
 
-    private lateinit var mAuth: FirebaseAuth
-    private var login = false
+    val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+        val firebaseUser = firebaseAuth.currentUser
+        if (firebaseUser == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }else{
+            Log.d(TAG, "Current user"+firebaseUser.uid)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latestmessage)
-        if (!login){
-            intent = Intent(this, LoginActivity::class.java)
-            startActivityForResult(intent, REQUEST_CORD)
-        }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 10 && resultCode != Activity.RESULT_OK){
-            finish()
-        }
-    }
 
     override fun onStart() {
         super.onStart()
-        mAuth.addAuthStateListener {
-            val user = it.currentUser
-            if (user !=null){
-                Log.d(TAG, "User is singed whit UID"+user.uid)
-                login=true
-            }
-        }
+        firebaseAuth!!.addAuthStateListener(this.authStateListener!!)
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
+
     }
 }

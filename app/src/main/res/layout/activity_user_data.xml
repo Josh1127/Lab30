@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0ff0f0"
+    tools:context=".UID.UserDataActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView_user"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/image_border"
+        android:onClick="photoPick"
+        app:civ_border_color="@android:color/black"
+        app:civ_border_width="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edittext_border"
+        android:ems="10"
+        android:hint="nickname"
+        android:inputType="textPersonName"
+        android:paddingLeft="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_user" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:text="選取照片"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_login"
+        android:onClick="save"
+        android:text="儲存"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/nickname"
+        app:layout_constraintStart_toStartOf="@+id/nickname"
+        app:layout_constraintTop_toBottomOf="@+id/nickname" />
+</androidx.constraintlayout.widget.ConstraintLayout>

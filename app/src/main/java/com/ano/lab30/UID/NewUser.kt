@@ -1,3 +1,3 @@
 package com.ano.lab30.UID
 
-class NewUser (val uid:String, val nickname: String)
+class NewUser (val uid:String, val email: String)
