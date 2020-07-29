@@ -6,8 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.ano.lab30.R
+import com.ano.lab30.R.id.*
 import com.ano.lab30.UID.LoginActivity
+import com.ano.lab30.UID.UserData
+import com.ano.lab30.UID.UserDataActivity
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_latestmessage.*
 
 class LatestMessageActivity : AppCompatActivity() {
     companion object{
@@ -28,6 +32,18 @@ class LatestMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latestmessage)
+
+        bottom_nav.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                userIcon-> startActivity(Intent(this, UserDataActivity::class.java))
+                new_message-> startActivity(Intent(this, NewMessageActivity::class.java))
+                sign_out-> {
+                    firebaseAuth.signOut()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+            }
+            true
+        }
     }
 
 

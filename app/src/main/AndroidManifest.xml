@@ -11,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UID.UserDataActivity">
-
+        <activity android:name=".Message.NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Message.LatestMessageActivity" />
         </activity>
-        <activity android:name=".UID.RegisterActivity"></activity>
-        <activity android:name=".UID.LoginActivity"></activity>
+        <activity android:name=".UID.UserDataActivity"></activity>
+        <activity android:name=".UID.RegisterActivity" />
+        <activity android:name=".UID.LoginActivity" />
         <activity android:name=".Message.LatestMessageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
