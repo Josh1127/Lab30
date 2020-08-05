@@ -7,6 +7,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import com.ano.lab30.Message.LatestMessageActivity
 import com.ano.lab30.R
@@ -17,12 +18,21 @@ import kotlinx.android.synthetic.main.activity_user_data.*
 import java.util.*
 
 class UserDataActivity : AppCompatActivity() {
-    val firebaseAuth = FirebaseAuth.getInstance()
 
-    var userPhotoPickUri : Uri? = null
+    companion object{
+        private const val TAG = "UserDataActivity"
+    }
+    private val firebaseAuth = FirebaseAuth.getInstance()
+
+    private var userPhotoPickUri : Uri? = null
+
+    private var userName = firebaseAuth.currentUser?.displayName ?: ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_data)
+
+        nickname.setText(userName)
     }
 
     fun photoPick(view: View){
@@ -52,9 +62,8 @@ class UserDataActivity : AppCompatActivity() {
     }
 
     private fun saveUserToDatabase(profileImageUri:String) {
-        val name = nickname.text.toString()
         val uid = firebaseAuth.uid ?:""
-        val user = UserData(uid,name, profileImageUri)
+        val user = UserData(uid,nickname.text.toString(), profileImageUri)
         val database = FirebaseDatabase.getInstance().getReference("/users/$uid/")
         database.setValue(user)
             .addOnSuccessListener {

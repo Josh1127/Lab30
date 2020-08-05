@@ -1,7 +1,5 @@
 package com.ano.lab30.UID
 
-import android.content.DialogInterface
-import android.content.DialogInterface.*
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,16 +15,16 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
     companion object{
-        val TAG = RegisterActivity::class.java.simpleName
+        private val TAG = RegisterActivity::class.java.simpleName
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
     }
     fun register(view: View){
-        val email = register_email.text.toString().trim()
-        val passwd = register_passwd.text.toString().trim()
-        val check = passwd_check.text.toString().trim()
+        val email = register_email.text.toString()
+        val passwd = register_passwd.text.toString()
+        val check = passwd_check.text.toString()
         if (email.isEmpty() || passwd.isEmpty()){
             Toast.makeText(this, "請輸入帳號及密碼", Toast.LENGTH_LONG).show()
             return
@@ -59,6 +57,4 @@ class RegisterActivity : AppCompatActivity() {
                     ) { _, _ -> startActivity(Intent(this, LatestMessageActivity::class.java))}.show()
             }
     }
-
-
 }

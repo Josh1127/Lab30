@@ -11,7 +11,10 @@ import com.ano.lab30.R.id.*
 import com.ano.lab30.UID.LoginActivity
 import com.ano.lab30.UID.UserData
 import com.ano.lab30.UID.UserDataActivity
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -26,6 +29,7 @@ class LatestMessageActivity : AppCompatActivity() {
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
         val firebaseUser = firebaseAuth.currentUser
+//        updateEmailFunction(firebaseUser)
         if (firebaseUser == null) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -57,8 +61,11 @@ class LatestMessageActivity : AppCompatActivity() {
                 userIcon-> startActivity(Intent(this, UserDataActivity::class.java))
                 new_message-> startActivity(Intent(this, NewMessageActivity::class.java))
                 sign_out-> {
-                    firebaseAuth.signOut()
-                    startActivity(Intent(this, LoginActivity::class.java))
+//                    firebaseAuth.signOut()
+                    AuthUI.getInstance().signOut(this).addOnCompleteListener { signOut ->
+                        if (signOut.isSuccessful)
+                            startActivity(Intent(this, LoginActivity::class.java))
+                    }
                 }
             }
             true
@@ -79,7 +86,7 @@ class LatestMessageActivity : AppCompatActivity() {
 
     private fun listenLatestMessage() {
         val fromId=FirebaseAuth.getInstance().uid
-        Log.d(TAG, "listenLatestMessage: $fromId")
+//        Log.d(TAG, "listenLatestMessage: $fromId")
         val ref = FirebaseDatabase.getInstance().getReference("latest-message/$fromId")
         ref.addChildEventListener(object : ChildEventListener {
             override fun onCancelled(error: DatabaseError) {}
@@ -127,5 +134,18 @@ class LatestMessageActivity : AppCompatActivity() {
         super.onStop()
         firebaseAuth!!.removeAuthStateListener(this.authStateListener!!)
 
+    }
+
+    private fun updateEmailFunction(firebaseUser: FirebaseUser?) {
+        val credential = EmailAuthProvider.getCredential("a@gmail.com", "123456")
+        firebaseUser?.reauthenticate(credential)?.addOnCompleteListener {
+            firebaseUser.updateEmail("ahogove@gmail.com").addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Log.d(TAG, "email update successful")
+                } else {
+                    Log.d(TAG, "email update failure" + it.exception)
+                }
+            }
+        }
     }
 }
